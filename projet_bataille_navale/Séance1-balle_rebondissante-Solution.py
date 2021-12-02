@@ -1,4 +1,4 @@
-
+#test
 import time
 
 def effaceEcran ():
@@ -38,7 +38,7 @@ def afficheGrille (grille) :
             print (grille[ligne][colonne],end="")
         print(" ")
     
-    
+
 
     
 # Calcule la nouvelle position de la balle en fonction de 
