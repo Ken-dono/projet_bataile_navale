@@ -1,5 +1,4 @@
 from Board import Board
-from Player import Player
 
 class SubMarine:
 	sub_1 = None
