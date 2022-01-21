@@ -9,3 +9,4 @@ class SubMarine:
 		self.sub_1 = []
 		self.sub_2 = []
 		self.sub_3 = []
+
