@@ -1,4 +1,5 @@
 from Board import Board
+from Submarine import SubMarine
 
 
 class Player:
@@ -7,23 +8,17 @@ class Player:
 
     def ask_coordinate(self, board):
         valid_layer = False
-        while valid_layer == False:
+        while not valid_layer:
             x = int(input("X : "))
             y = int(input("Y : "))
             layer = int(input("Layer : "))
-            if layer == 1 and 0 <= x <= 9 and 0 <= y < 5:
-                layer = board.board[layer - 1]
+            if 0 < layer < 4 and 0 <= y <= 9 and 0 <= x < 5:
                 valid_layer = True
-            elif layer == 2 and 0 <= x <= 9 and 0 <= y < 5:
-                valid_layer = True
-                layer = board.board[layer - 1]
-            elif layer == 3 and 0 <= x <= 9 and 0 <= y < 5:
-                valid_layer = True
-                layer = board.board[layer - 1]
             else:
                 print("Invalid coordinates")
-        return x, y, layer
+        return x, y, (layer - 1)
 
     def fire_torpedo(self, board):
         x, y, layer = Player.ask_coordinate(Player, board)
         print("FIRE !!!!!!!")
+        return x,y,layer

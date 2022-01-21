@@ -2,7 +2,7 @@ from Board import Board
 
 def is_sub_here(x,y,layer, board):
 	print(x,y,layer)
-	if board.board[layer][x][y] == '1':
+	if board.board[layer][x][y] == 'T':
 		return True
 	else:
 		return False
@@ -15,16 +15,16 @@ def is_sub_around(x,y,layer,board):
 				see = True
 	if not see:
 		for v in range(x - 1, x + 2, 1):
-			if not see and 5 > x >= 0:
+			if not see and 5 > v >= 0:
 				if is_sub_here(v, y, layer, board):
 					see = True
 	if see:
 		for i in range(y - 1, y + 2, 1):
-			if 10 > x >= 0:
+			if 10 > i >= 0:
 				if board.board[layer][x][i] != 'T':
 					board.board[layer][x][i] = 'V'
 		for v in range(x - 1, x + 2, 1):
-			if 5 > y >= 0:
+			if 5 > v >= 0:
 				if board.board[layer][v][y] != 'T':
 					board.board[layer][v][y] = 'V'
 		return True
@@ -33,11 +33,11 @@ def is_sub_around(x,y,layer,board):
 
 def no_one_around(x,y,layer,board):
 	for i in range(y - 1, y + 2, 1):
-		if 10 > y >= 0:
+		if 10 > i >= 0:
 			if board.board[layer][x][i] != 'T':
 				board.board[layer][x][i] = 'R'
 	for v in range(x - 1, x + 2, 1):
-		if 5 > x >= 0:
+		if 5 > v >= 0:
 			if board.board[layer][v][y] != 'T':
 				board.board[layer][v][y] = 'R'
 
