@@ -77,3 +77,11 @@ class Board:
             for v in range(5):
                 print(v, end="  ")
                 print(self.board[i][v])
+
+    def clear_info(self):
+        for i in range(3):
+            for v in range(5):
+                for y in range(10):
+                    if self.board[i][v][y] == 'V' or \
+                            self.board[i][v][y] == 'R':
+                        self.board[i][v][y] == '0'
