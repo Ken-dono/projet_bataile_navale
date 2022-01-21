@@ -1,9 +1,5 @@
 def is_place_valid(x, y, layer):
-<<<<<<< HEAD
-    if layer[x][y] == '0' and 0 <= x < 9 and 0 <= y < 5:
-=======
     if layer[x][y] == '0' and 9 > x >= 0 and 5 > y >= 0:
->>>>>>> c7bb7b8a769845ca5e484d93d479c0e2b8d7b617
         return True
     else:
         return False
