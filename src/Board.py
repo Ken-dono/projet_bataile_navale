@@ -1,5 +1,5 @@
 def is_place_valid(x, y, layer):
-    if layer[x][y] == 0 and 0 > x > 9 and 0 > y > 5:
+    if layer[x][y] == '0' and 0 <= x < 9 and 0 <= y < 5:
         return True
     else:
         return False
@@ -36,7 +36,7 @@ class Board:
         self.layer_3 = [['0' for i in range(10)] for j in range(5)]
         self.board = [self.layer_1, self.layer_2, self.layer_3]
 
-    def place_sub(self, x, y, sub, facing, layer):      
+    def place_sub(self, x, y, sub, facing, layer):
         if 0 > layer or layer > 2:
             return -1
         if sub == 1:
@@ -66,12 +66,12 @@ class Board:
     def draw_board(self):
         legend = [str(i) for i in range(10)]
         for i in range(3):
-            print("Couche :",i + 1)
-            print("   ",end='')
+            print("Couche :", i + 1)
+            print("   ", end='')
             for y in range(10):
-                print("  "+legend[y]+"  ",end='')
+                print("  " + legend[y] + "  ", end='')
             print('')
-            
+
             for v in range(5):
-                print(v,end="  ")
+                print(v, end="  ")
                 print(self.board[i][v])
