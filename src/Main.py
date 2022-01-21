@@ -20,12 +20,15 @@ while not is_game_finished:
             current_board = board_2
             current_sub = sub_2
             x,y,layer = current_player.fire_torpedo(current_board)
+            current_board.clear_info()
             current_sub.shot_result(x, y, layer, current_board)
             current_board.draw_board()
         elif player == 2:
             current_player = player_2
             current_board = board_1
             current_sub = sub_1
+            current_board.clear_info()
+            current_sub.shot_result(x, y, layer, current_board)
             current_player.fire_torpedo(current_board)
             current_board.draw_board()
             # FIN DE BOUCLE POUR TEST

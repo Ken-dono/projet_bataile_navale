@@ -82,6 +82,7 @@ class Board:
         for i in range(3):
             for v in range(5):
                 for y in range(10):
+                    # print(i,v,y)
                     if self.board[i][v][y] == 'V' or \
                             self.board[i][v][y] == 'R':
-                        self.board[i][v][y] == 'S'
+                        self.board[i][v][y] = '0'
