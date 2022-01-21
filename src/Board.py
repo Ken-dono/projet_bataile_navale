@@ -1,5 +1,9 @@
 def is_place_valid(x, y, layer):
+<<<<<<< HEAD
     if layer[x][y] == '0' and 0 <= x < 9 and 0 <= y < 5:
+=======
+    if layer[x][y] == '0' and 9 > x >= 0 and 5 > y >= 0:
+>>>>>>> c7bb7b8a769845ca5e484d93d479c0e2b8d7b617
         return True
     else:
         return False
@@ -10,16 +14,17 @@ def facing_coordinates(x, y, facing, size):
     y2 = y
     x3 = x
     y3 = y
-    if facing == 's':
+    if facing == 'e':
         y2 += 1
         y3 += 2
-    elif facing == 'n':
+    elif facing == 'w':
         y2 -= 1
         y3 -= 2
-    elif facing == 'w':
+    elif facing == 'n':
         x2 -= 1
         x3 -= 2
-    elif facing == 'e':
+
+    elif facing == 's':
         x2 += 1
         x3 += 2
     if size == 2:
@@ -41,15 +46,16 @@ class Board:
             return -1
         if sub == 1:
             if is_place_valid(x, y, self.board[layer]):
-                self.board[layer][x][y] = 1
+                self.board[layer][x][y] = '1'
             else:
                 print("Erreur case invalide")
         elif sub == 2:
             x2, y2 = facing_coordinates(x, y, facing, sub)
+            print(x, x2, y, y2)
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]):
-                self.board[layer][x][y] = 1
-                self.board[layer][x2][y2] = 1
+                self.board[layer][x][y] = '1'
+                self.board[layer][x2][y2] = '1'
             else:
                 print("Erreur case invalide")
         elif sub == 3:
@@ -57,9 +63,9 @@ class Board:
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]) and \
                     is_place_valid(x3, y3, self.board[layer]):
-                self.board[layer][x][y] = 1
-                self.board[layer][x2][y2] = 1
-                self.board[layer][x3][y3] = 1
+                self.board[layer][x][y] = '1'
+                self.board[layer][x2][y2] = '1'
+                self.board[layer][x3][y3] = '1'
             else:
                 print("Erreur case invalide")
 
@@ -75,3 +81,11 @@ class Board:
             for v in range(5):
                 print(v, end="  ")
                 print(self.board[i][v])
+
+    def clear_info(self):
+        for i in range(3):
+            for v in range(5):
+                for y in range(10):
+                    if self.board[i][v][y] == 'V' or \
+                            self.board[i][v][y] == 'R':
+                        self.board[i][v][y] == '0'
