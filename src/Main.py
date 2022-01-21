@@ -2,39 +2,25 @@ from Board import Board
 from Player import Player
 from Submarine import SubMarine
 
-player_1 = Player()
-board_1 = Board()
-sub_1 = SubMarine()
-player_2 = Player()
-board_2 = Board()
-sub_2 = SubMarine()
-current_player = Player()
-current_board = Board()
-current_sub = SubMarine()
-is_game_finished = False
-while not is_game_finished:
-    for player in [1, 2]:
-        print("Player ", player, "'s turn")
-        if player == 1:
-            current_player = player_1
-            current_board = board_2
-            current_sub = sub_2
-            x,y,layer = current_player.fire_torpedo(current_board)
-            current_board.clear_info()
-            current_sub.shot_result(x, y, layer, current_board)
-            current_board.draw_board()
-        elif player == 2:
-            current_player = player_2
-            current_board = board_1
-            current_sub = sub_1
-            current_board.clear_info()
-            current_sub.shot_result(x, y, layer, current_board)
-            current_player.fire_torpedo(current_board)
-            current_board.draw_board()
-            # FIN DE BOUCLE POUR TEST
-            # is_game_finished = True
-        if is_game_finished:
-            break
-    player = 1
 
-    # current_board.draw_board()
+is_game_finished = False
+Tplayer = [Player(),Player()]
+Tboard = [Board(),Board()]
+TSub = [SubMarine(),SubMarine()]
+count = 0
+while not is_game_finished:
+    p_index = count % 2
+    count +=1
+    e_index = count % 2
+    print("Player ", p_index + 1, "'s turn")
+    Tboard[p_index].draw_board() #Draw the board before choosing coordinate
+    x,y,layer = Tplayer[p_index].fire_torpedo(Tboard[e_index]) #Shoot
+    Tboard[p_index].clear_info() #Clear previous shot information
+    TSub[p_index].shot_result(x,y,layer,Tboard[p_index]) #Calculate the result
+    Tboard[p_index].draw_board() #Draw the update board
+
+
+    # FIN DE BOUCLE POUR TEST
+    is_game_finished = True
+    if is_game_finished:
+        break

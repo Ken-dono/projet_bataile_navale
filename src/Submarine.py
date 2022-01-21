@@ -1,7 +1,6 @@
 from Board import Board
 
 def is_sub_here(x,y,layer, board):
-	print(x,y,layer)
 	if board.board[layer][x][y] == 'T':
 		return True
 	else:
