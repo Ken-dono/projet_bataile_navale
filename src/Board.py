@@ -42,7 +42,7 @@ class Board:
             return -1
         if sub == 1:
             if is_place_valid(x, y, self.board[layer]):
-                self.board[layer][x][y] = '1'
+                self.board[layer][x][y] = 'S'
             else:
                 print("Erreur case invalide")
         elif sub == 2:
@@ -50,8 +50,8 @@ class Board:
             print(x, x2, y, y2)
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]):
-                self.board[layer][x][y] = '1'
-                self.board[layer][x2][y2] = '1'
+                self.board[layer][x][y] = 'S'
+                self.board[layer][x2][y2] = 'S'
             else:
                 print("Erreur case invalide")
         elif sub == 3:
@@ -59,9 +59,9 @@ class Board:
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]) and \
                     is_place_valid(x3, y3, self.board[layer]):
-                self.board[layer][x][y] = '1'
-                self.board[layer][x2][y2] = '1'
-                self.board[layer][x3][y3] = '1'
+                self.board[layer][x][y] = 'S'
+                self.board[layer][x2][y2] = 'S'
+                self.board[layer][x3][y3] = 'S'
             else:
                 print("Erreur case invalide")
 
@@ -84,4 +84,4 @@ class Board:
                 for y in range(10):
                     if self.board[i][v][y] == 'V' or \
                             self.board[i][v][y] == 'R':
-                        self.board[i][v][y] == '0'
+                        self.board[i][v][y] == 'S'
