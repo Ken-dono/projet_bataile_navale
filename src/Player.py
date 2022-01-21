@@ -1,11 +1,9 @@
 from Board import Board
-from Submarine import SubMarine
 
 
 class Player:
     def __init__(self):
         Board.__init__(self)
-        SubMarine.__init__(self)
 
     def ask_coordinate(self, board):
         valid_layer = False
