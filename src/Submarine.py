@@ -50,9 +50,9 @@ class SubMarine:
     sub_3 = None
 
     def __init__(self):
-        self.sub_1 = [[], [], []]  # [[layer],[x],[y]]
-        self.sub_2 = [[], [], []]  # [[layer],[x,x],[y,y]]
-        self.sub_3 = [[], [], []]  # [[layer],[x,x,x],[y,y,y]]
+        self.sub_1 = [[], [], [],[]]  # [[layer],[x],[y],[T]
+        self.sub_2 = [[], [], [],[]]  # [[layer],[x,x],[y,y],[T,T]]
+        self.sub_3 = [[], [], [],[]]  # [[layer],[x,x,x],[y,y,y],[T,T,T]]
         self.sub = [self.sub_1, self.sub_2, self.sub_3]
 
     def shot_result(self, x, y, layer, board_sub, board_display):
@@ -66,15 +66,27 @@ class SubMarine:
                 no_one_around(x, y, layer, board_display)
 
     def damage_sub(self, x, y, layer, board):
-        save_index = 0
         for i in range(3):  # Check all Sub
             # Find Subs in the right layer
+            print(self.sub)
             if len(self.sub[i][1]) > 0 and self.sub[i][0][0] == layer:
                 for v in range(len(self.sub[i][1])):
                     if self.sub[i][1][v] == x and self.sub[i][2][v] == y:
                         # Find the right Sub
-                        save_index = v  # Save the index in the list
+                        self.sub[i][3].append(1)
+                        if self.is_sink(i):
+                            for j in range(self.sub[i][0][0]):
+                                board.board[layer][self.sub[i][1][j]][
+                                    self.sub[i][2][j]] = 'C'
+                        else:
+                            board.board[layer][x][y] = 'T'
                         break
-                self.sub[i][1].pop(save_index)  # Delete the coordinate
-                self.sub[i][2].pop(save_index)
-        board.board[layer][x][y] = 'T'
+
+
+
+
+    def is_sink(self, sub_index):
+        print(len(self.sub[sub_index][3]), sub_index + 1)
+        if len(self.sub[sub_index][3]) == sub_index + 1:
+            print("We are sinking my captain")
+            return True

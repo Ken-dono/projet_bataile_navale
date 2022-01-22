@@ -9,7 +9,7 @@ Tboard_display = [Board(),Board()] #Use for display function
 Tboard_sub = [Board(),Board()]
 TSub = [SubMarine(),SubMarine()]
 count = 0
-Tboard_sub[1].place_sub(1,1,1,'w',1,TSub[1])
+Tboard_sub[1].place_sub(1,1,2,'w',1,TSub[1])
 while not is_game_finished:
     p_index = count % 2
     count +=1
@@ -22,6 +22,7 @@ while not is_game_finished:
     TSub[e_index].shot_result(x,y,layer,Tboard_sub[e_index],Tboard_display[
         e_index])
     Tboard_display[e_index].draw_board() #Draw the update board
+    Tboard_sub[e_index].draw_board()
 
     # FIN DE BOUCLE POUR TEST
     is_game_finished = True
