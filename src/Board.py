@@ -1,5 +1,5 @@
 def is_place_valid(x, y, layer):
-    if layer[x][y] == '0' and 9 > x >= 0 and 5 > y >= 0:
+    if layer[x][y] == '_' and 9 > x >= 0 and 5 > y >= 0:
         return True
     else:
         return False
@@ -32,9 +32,9 @@ def facing_coordinates(x, y, facing, size):
 class Board:
     def __init__(self):
         # initialize layers array [y][x]
-        self.layer_1 = [['0' for i in range(10)] for j in range(5)]
-        self.layer_2 = [['0' for i in range(10)] for j in range(5)]
-        self.layer_3 = [['0' for i in range(10)] for j in range(5)]
+        self.layer_1 = [['_' for i in range(10)] for j in range(5)]
+        self.layer_2 = [['_' for i in range(10)] for j in range(5)]
+        self.layer_3 = [['_' for i in range(10)] for j in range(5)]
         self.board = [self.layer_1, self.layer_2, self.layer_3]
 
     def place_sub(self, x, y, sub, facing, layer):
@@ -85,4 +85,4 @@ class Board:
                     # print(i,v,y)
                     if self.board[i][v][y] == 'V' or \
                             self.board[i][v][y] == 'R':
-                        self.board[i][v][y] = '0'
+                        self.board[i][v][y] = '_'
