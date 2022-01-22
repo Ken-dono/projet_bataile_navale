@@ -37,12 +37,16 @@ class Board:
         self.layer_3 = [['_' for i in range(10)] for j in range(5)]
         self.board = [self.layer_1, self.layer_2, self.layer_3]
 
-    def place_sub(self, x, y, sub, facing, layer):
+    def place_sub(self, x, y, sub, facing, layer, submarine):
         if 0 > layer or layer > 2:
             return -1
         if sub == 1:
             if is_place_valid(x, y, self.board[layer]):
                 self.board[layer][x][y] = 'S'
+                submarine.sub[0][0].append(layer)
+                submarine.sub[0][1].append(x)
+                submarine.sub[0][2].append(y)
+                # print(submarine.sub[0])
             else:
                 print("Erreur case invalide")
         elif sub == 2:
