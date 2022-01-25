@@ -68,7 +68,6 @@ class SubMarine:
     def damage_sub(self, x, y, layer, board):
         for i in range(3):  # Check all Sub
             # Find Subs in the right layer
-            print(self.sub)
             if len(self.sub[i][1]) > 0 and self.sub[i][0][0] == layer:
                 for v in range(len(self.sub[i][1])):
                     if self.sub[i][1][v] == x and self.sub[i][2][v] == y:

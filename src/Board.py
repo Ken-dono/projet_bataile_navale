@@ -46,7 +46,6 @@ class Board:
                 submarine.sub[0][0].append(layer)
                 submarine.sub[0][1].append(x)
                 submarine.sub[0][2].append(y)
-                # print(submarine.sub[0])
             else:
                 print("Erreur case invalide")
         elif sub == 2:
@@ -54,6 +53,11 @@ class Board:
             print(x, x2, y, y2)
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]):
+                submarine.sub[1][0].append(layer)
+                submarine.sub[1][1].append(x)
+                submarine.sub[1][1].append(x2)
+                submarine.sub[1][2].append(y)
+                submarine.sub[1][2].append(y2)
                 self.board[layer][x][y] = 'S'
                 self.board[layer][x2][y2] = 'S'
             else:
@@ -63,6 +67,14 @@ class Board:
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]) and \
                     is_place_valid(x3, y3, self.board[layer]):
+                print("")
+                submarine.sub[1][0].append(layer)
+                submarine.sub[1][1].append(x)
+                submarine.sub[1][1].append(x2)
+                submarine.sub[1][1].append(x3)
+                submarine.sub[1][2].append(y)
+                submarine.sub[1][2].append(y2)
+                submarine.sub[1][2].append(y3)
                 self.board[layer][x][y] = 'S'
                 self.board[layer][x2][y2] = 'S'
                 self.board[layer][x3][y3] = 'S'
