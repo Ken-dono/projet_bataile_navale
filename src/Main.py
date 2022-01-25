@@ -9,6 +9,14 @@ Tboard_sub = [Board(), Board()]
 TSub = [SubMarine(), SubMarine()]
 count = 0
 Tboard_sub[1].place_sub(1, 1, 3, 'e', 1, TSub[1])
+
+def is_game_finish(self, sub):
+    buffer = 0
+    for _ in range(3):
+        buffer += len(sub[_][3])
+
+    return buffer == 6
+
 while not is_game_finished:
 
     p_index = count % 2
