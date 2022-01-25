@@ -1,5 +1,5 @@
 def is_place_valid(x, y, layer):
-    if layer[x][y] == '0' and 9 > x >= 0 and 5 > y >= 0:
+    if layer[x][y] == '_' and 9 > x >= 0 and 5 > y >= 0:
         return True
     else:
         return False
@@ -32,17 +32,20 @@ def facing_coordinates(x, y, facing, size):
 class Board:
     def __init__(self):
         # initialize layers array [y][x]
-        self.layer_1 = [['0' for i in range(10)] for j in range(5)]
-        self.layer_2 = [['0' for i in range(10)] for j in range(5)]
-        self.layer_3 = [['0' for i in range(10)] for j in range(5)]
+        self.layer_1 = [['_' for i in range(10)] for j in range(5)]
+        self.layer_2 = [['_' for i in range(10)] for j in range(5)]
+        self.layer_3 = [['_' for i in range(10)] for j in range(5)]
         self.board = [self.layer_1, self.layer_2, self.layer_3]
 
-    def place_sub(self, x, y, sub, facing, layer):
+    def place_sub(self, x, y, sub, facing, layer, submarine):
         if 0 > layer or layer > 2:
             return -1
         if sub == 1:
             if is_place_valid(x, y, self.board[layer]):
-                self.board[layer][x][y] = '1'
+                self.board[layer][x][y] = 'S'
+                submarine.sub[0][0].append(layer)
+                submarine.sub[0][1].append(x)
+                submarine.sub[0][2].append(y)
             else:
                 print("Erreur case invalide")
         elif sub == 2:
@@ -50,8 +53,13 @@ class Board:
             print(x, x2, y, y2)
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]):
-                self.board[layer][x][y] = '1'
-                self.board[layer][x2][y2] = '1'
+                submarine.sub[1][0].append(layer)
+                submarine.sub[1][1].append(x)
+                submarine.sub[1][1].append(x2)
+                submarine.sub[1][2].append(y)
+                submarine.sub[1][2].append(y2)
+                self.board[layer][x][y] = 'S'
+                self.board[layer][x2][y2] = 'S'
             else:
                 print("Erreur case invalide")
         elif sub == 3:
@@ -59,9 +67,17 @@ class Board:
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]) and \
                     is_place_valid(x3, y3, self.board[layer]):
-                self.board[layer][x][y] = '1'
-                self.board[layer][x2][y2] = '1'
-                self.board[layer][x3][y3] = '1'
+                print("")
+                submarine.sub[1][0].append(layer)
+                submarine.sub[1][1].append(x)
+                submarine.sub[1][1].append(x2)
+                submarine.sub[1][1].append(x3)
+                submarine.sub[1][2].append(y)
+                submarine.sub[1][2].append(y2)
+                submarine.sub[1][2].append(y3)
+                self.board[layer][x][y] = 'S'
+                self.board[layer][x2][y2] = 'S'
+                self.board[layer][x3][y3] = 'S'
             else:
                 print("Erreur case invalide")
 
@@ -82,6 +98,7 @@ class Board:
         for i in range(3):
             for v in range(5):
                 for y in range(10):
+                    # print(i,v,y)
                     if self.board[i][v][y] == 'V' or \
                             self.board[i][v][y] == 'R':
-                        self.board[i][v][y] == '0'
+                        self.board[i][v][y] = '_'
