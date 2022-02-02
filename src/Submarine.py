@@ -19,6 +19,11 @@ def is_sub_around(x, y, layer, board_sub, board_display):
             if not see and 5 > v >= 0:
                 if is_sub_here(v, y, layer, board_sub):
                     see = True
+    if not see:
+        layer_above = layer - 1
+        if layer_above >= 0:
+            if is_sub_here(x, y, layer_above, board_sub):
+                see = True
     if see:
         for i in range(y - 1, y + 2, 1):
             if 10 > i >= 0:
@@ -28,6 +33,7 @@ def is_sub_around(x, y, layer, board_sub, board_display):
             if 5 > v >= 0:
                 if board_display.board[layer][v][y] != 'T':
                     board_display.board[layer][v][y] = 'V'
+        board_display.board[layer_above][x][y] = 'V'
         return True
     else:
         return False
@@ -50,9 +56,9 @@ class SubMarine:
     sub_3 = None
 
     def __init__(self):
-        self.sub_1 = [[], [], [],[]]  # [[layer],[x],[y],[T]
-        self.sub_2 = [[], [], [],[]]  # [[layer],[x,x],[y,y],[T,T]]
-        self.sub_3 = [[], [], [],[]]  # [[layer],[x,x,x],[y,y,y],[T,T,T]]
+        self.sub_1 = [[], [], [], []]  # [[layer],[x],[y],[T]]
+        self.sub_2 = [[], [], [], []]  # [[layer],[x,x],[y,y],[T,T]]
+        self.sub_3 = [[], [], [], []]  # [[layer],[x,x,x],[y,y,y],[T,T,T]]
         self.sub = [self.sub_1, self.sub_2, self.sub_3]
 
     def shot_result(self, x, y, layer, board_sub, board_display):
@@ -80,9 +86,6 @@ class SubMarine:
                         else:
                             board.board[layer][x][y] = 'T'
                         break
-
-
-
 
     def is_sink(self, sub_index):
         print(len(self.sub[sub_index][3]), sub_index + 1)
