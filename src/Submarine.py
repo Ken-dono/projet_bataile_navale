@@ -19,9 +19,9 @@ def is_sub_around(x, y, layer, board_sub, board_display):
             if not see and 5 > v >= 0:
                 if is_sub_here(v, y, layer, board_sub):
                     see = True
+    layer_above = layer - 1
     if not see:
-        layer_above = layer - 1
-        if layer_above >= 0:
+        if layer_above <= 2:
             if is_sub_here(x, y, layer_above, board_sub):
                 see = True
     if see:
