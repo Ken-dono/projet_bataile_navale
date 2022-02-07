@@ -1,5 +1,5 @@
 def is_place_valid(x, y, layer):
-    if layer[x][y] == '_' and 9 > x >= 0 and 5 > y >= 0:
+    if layer[x][y] == '_' and 4 >= x >= 0 and 9 >= y >= 0:
         return True
     else:
         return False
@@ -50,7 +50,6 @@ class Board:
                 print("Erreur case invalide")
         elif sub == 2:
             x2, y2 = facing_coordinates(x, y, facing, sub)
-            print(x, x2, y, y2)
             if is_place_valid(x, y, self.board[layer]) and \
                     is_place_valid(x2, y2, self.board[layer]):
                 submarine.sub[1][0].append(layer)

@@ -16,7 +16,7 @@ class Player:
             x = is_input_digit(input("X : "))
             y = is_input_digit(input("Y : "))
             layer = is_input_digit(input("Layer : "))
-            if 0 < layer < 4 and 0 <= y <= 9 and 0 <= x < 5:
+            if 0 < layer < 4 and 0 <= y <= 9 and 0 <= x <= 4:
                 valid_layer = True
             else:
                 print("Invalid coordinates")
