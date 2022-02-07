@@ -80,7 +80,9 @@ class SubMarine:
                         # Find the right Sub
                         self.sub[i][3].append(1)
                         if self.is_sink(i):
+                            print(len(self.sub[i][0][0]))
                             for j in range(self.sub[i][0][0]):
+                                print("ZIHJOGIJSIOFJSEOIFJIOJDFIOJDSFOIJSD")
                                 board.board[layer][self.sub[i][1][j]][
                                     self.sub[i][2][j]] = 'C'
                         else:

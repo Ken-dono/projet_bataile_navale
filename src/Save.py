@@ -24,7 +24,6 @@ def load_game():
 
 def extract_data(action, index):
     facing = ''
-    print(index)
     if index < 6:
         facing = action[index][4]
     p_index = int(action[index][0])
@@ -32,5 +31,4 @@ def extract_data(action, index):
     x = int(action[index][1])
     y = int(action[index][2])
     layer = int(action[index][3])
-
     return p_index, e_index, x, y, layer, facing
