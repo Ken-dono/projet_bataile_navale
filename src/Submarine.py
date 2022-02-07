@@ -82,10 +82,8 @@ class SubMarine:
                         break
 
 
-
-
     def is_sink(self, sub_index):
-        print(len(self.sub[sub_index][3]), sub_index + 1)
+        #print(len(self.sub[sub_index][3]), sub_index + 1)
         if len(self.sub[sub_index][3]) == sub_index + 1:
             print("We are sinking my captain")
             return True
