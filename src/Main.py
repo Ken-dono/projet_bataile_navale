@@ -10,6 +10,7 @@ Tboard_display = [Board(), Board()]  # Use for display function
 Tboard_sub = [Board(), Board()]
 TSub = [SubMarine(), SubMarine()]
 count = 0
+#test
 
 # Game initialization
 print("-------------GAME INITIALIZATION-------------")
