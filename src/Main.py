@@ -77,7 +77,7 @@ if not is_sub_placed:
 
 # Play
 while not is_game_finished:
-    clear()
+    #clear()
     p_index = count % 2
     count += 1
     e_index = count % 2
