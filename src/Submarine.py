@@ -75,15 +75,13 @@ class SubMarine:
     def damage_sub(self, x, y, layer, board):
         for i in range(3):  # Check all Sub
             # Find Subs in the right layer
-            print(self.sub[i])
             if len(self.sub[i][1]) > 0 and self.sub[i][0][0] == layer:
-                print("AHHHHH")
                 for v in range(len(self.sub[i][1])):
                     if self.sub[i][1][v] == x and self.sub[i][2][v] == y:
                         # Find the right Sub
                         self.sub[i][3].append('T')
                         if self.is_sink(i):
-                            for j in range(len(self.sub[i][0])):
+                            for j in range(i+1):
                                 board.board[layer][self.sub[i][1][j]][
                                     self.sub[i][2][j]] = 'C'
                         else:
