@@ -62,6 +62,7 @@ class SubMarine:
         self.sub = [self.sub_1, self.sub_2, self.sub_3]
 
     def shot_result(self, x, y, layer, board_sub, board_display):
+        print(layer)
         if is_sub_here(x, y, layer, board_sub):
             # board.board[layer][x][y] = 'T'
             SubMarine.damage_sub(self, x, y, layer, board_display)
@@ -74,7 +75,9 @@ class SubMarine:
     def damage_sub(self, x, y, layer, board):
         for i in range(3):  # Check all Sub
             # Find Subs in the right layer
+            print(self.sub[i])
             if len(self.sub[i][1]) > 0 and self.sub[i][0][0] == layer:
+                print("AHHHHH")
                 for v in range(len(self.sub[i][1])):
                     if self.sub[i][1][v] == x and self.sub[i][2][v] == y:
                         # Find the right Sub

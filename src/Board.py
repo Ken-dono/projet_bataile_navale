@@ -67,13 +67,13 @@ class Board:
                     is_place_valid(x2, y2, self.board[layer]) and \
                     is_place_valid(x3, y3, self.board[layer]):
                 print("")
-                submarine.sub[1][0].append(layer)
-                submarine.sub[1][1].append(x)
-                submarine.sub[1][1].append(x2)
-                submarine.sub[1][1].append(x3)
-                submarine.sub[1][2].append(y)
-                submarine.sub[1][2].append(y2)
-                submarine.sub[1][2].append(y3)
+                submarine.sub[2][0].append(layer)
+                submarine.sub[2][1].append(x)
+                submarine.sub[2][1].append(x2)
+                submarine.sub[2][1].append(x3)
+                submarine.sub[2][2].append(y)
+                submarine.sub[2][2].append(y2)
+                submarine.sub[2][2].append(y3)
                 self.board[layer][x][y] = 'S'
                 self.board[layer][x2][y2] = 'S'
                 self.board[layer][x3][y3] = 'S'
