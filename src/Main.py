@@ -49,7 +49,6 @@ if choice == 'Y' or choice == 'y':
             p_index, e_index, x, y, layer, facing = Save.extract_data(action, i)
             if i < 3:
                 print("Player 1 place sub")
-                print("Layer :"+str(layer)+"x:"+str(x)+"y :"+str(y) + "sub :" + str(i+1))                      
                 Tboard_sub[p_index].place_sub(x, y, i+1, facing, layer, TSub[p_index])
             elif i < 6:
                 print("Player 2 place sub")
@@ -84,14 +83,12 @@ if not is_sub_placed:
 
 # Play
 while not is_game_finished:
-    #clear()
+    clear()
     p_index = count % 2
     count += 1
     e_index = count % 2
     facing = 'x'  # Default value when not placing sub
     print("Player ", p_index + 1, "'s turn")
-    Tboard_sub[e_index].draw_board()  # Draw the update board
-    print("Board display")
     Tboard_display[e_index].draw_board()  # Draw the board before choosing coordinate
     x, y, layer = Tplayer[p_index].fire_torpedo(Tboard_sub[e_index])  # Shoot
     Tboard_display[e_index].clear_info()  # Clear previous shot information
@@ -106,4 +103,4 @@ while not is_game_finished:
     is_game_finished = is_game_finish(TSub[e_index].sub)
     # if is_game_finished:
     #     break
-
+    input("Appuyer sur une touche pour passer au joueur suivant")

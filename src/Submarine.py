@@ -62,7 +62,6 @@ class SubMarine:
         self.sub = [self.sub_1, self.sub_2, self.sub_3]
 
     def shot_result(self, x, y, layer, board_sub, board_display):
-        print(layer)
         if is_sub_here(x, y, layer, board_sub):
             # board.board[layer][x][y] = 'T'
             SubMarine.damage_sub(self, x, y, layer, board_display)
@@ -89,7 +88,6 @@ class SubMarine:
                         break
 
     def is_sink(self, sub_index):
-        #print(len(self.sub[sub_index][3]), sub_index + 1)
         if len(self.sub[sub_index][3]) == sub_index + 1:
             print("We are sinking my captain")
             return True

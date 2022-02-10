@@ -83,7 +83,7 @@ class Board:
     def draw_board(self):
         legend = [str(i) for i in range(10)]
         for i in range(3):
-            print("Couche :", i + 1)
+            print("Couche :",str(i + 1)+"00 mètres")
             print("   ", end='')
             for y in range(10):
                 print("  " + legend[y] + "  ", end='')
