@@ -39,15 +39,17 @@ class Board:
 
     def place_sub(self, x, y, sub, facing, layer, submarine):
         if 0 > layer or layer > 2:
-            return -1
+            return False
         if sub == 1:
             if is_place_valid(x, y, self.board[layer]):
                 self.board[layer][x][y] = 'S'
                 submarine.sub[0][0].append(layer)
                 submarine.sub[0][1].append(x)
                 submarine.sub[0][2].append(y)
+                return True
             else:
                 print("Erreur case invalide")
+                return False
         elif sub == 2:
             x2, y2 = facing_coordinates(x, y, facing, sub)
             if is_place_valid(x, y, self.board[layer]) and \
@@ -59,8 +61,10 @@ class Board:
                 submarine.sub[1][2].append(y2)
                 self.board[layer][x][y] = 'S'
                 self.board[layer][x2][y2] = 'S'
+                return True
             else:
                 print("Erreur case invalide")
+                return False
         elif sub == 3:
             x2, y2, x3, y3 = facing_coordinates(x, y, facing, sub)
             if is_place_valid(x, y, self.board[layer]) and \
@@ -77,8 +81,10 @@ class Board:
                 self.board[layer][x][y] = 'S'
                 self.board[layer][x2][y2] = 'S'
                 self.board[layer][x3][y3] = 'S'
+                return True
             else:
                 print("Erreur case invalide")
+                return False
 
     def draw_board(self):
         legend = [str(i) for i in range(10)]
