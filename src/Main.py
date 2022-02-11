@@ -78,6 +78,7 @@ if not is_sub_placed:
             Tboard_sub[p_index].place_sub(x, y, s_index+1, f, l, TSub[p_index])
             Save.record_action(p_index, x, y, l, f)
         Tboard_sub[p_index].draw_board()
+        input("Appuyer sur une touche pour passer au joueur suivant")
         clear()
     print("-----------------GAME READY------------------")
 
