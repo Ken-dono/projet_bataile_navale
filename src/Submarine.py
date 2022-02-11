@@ -78,7 +78,9 @@ class SubMarine:
                 for v in range(len(self.sub[i][1])):
                     if self.sub[i][1][v] == x and self.sub[i][2][v] == y:
                         # Find the right Sub
-                        self.sub[i][3].append('T')
+                        if board.board[layer][x][y] != 'T' and \
+                           board.board[layer][x][y] != 'C':
+                            self.sub[i][3].append('T')
                         if self.is_sink(i):
                             for j in range(i+1):
                                 board.board[layer][self.sub[i][1][j]][

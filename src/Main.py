@@ -28,8 +28,11 @@ def clear():
 
 def is_game_finish(sub):
     buffer = 0
-    for _ in range(3):
-        buffer += len(sub[_][3])
+    for i in range(3):
+        hitnb = len(sub[i][3])
+        if hitnb > i + 1:
+            hitnb = i + 1
+        buffer += hitnb
     if buffer == 6:
         return True
     else:
