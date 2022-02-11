@@ -101,6 +101,4 @@ while not is_game_finished:
     # FIN DE BOUCLE POUR TEST
     Save.record_action(p_index, x, y, layer, facing)
     is_game_finished = is_game_finish(TSub[e_index].sub)
-    # if is_game_finished:
-    #     break
     input("Appuyer sur une touche pour passer au joueur suivant")
