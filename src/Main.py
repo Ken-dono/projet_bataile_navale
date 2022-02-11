@@ -1,3 +1,5 @@
+#ESEO E3a Angers
+
 import Save
 from Board import Board
 from Player import Player
